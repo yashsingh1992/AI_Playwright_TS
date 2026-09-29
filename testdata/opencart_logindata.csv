@@ -1,0 +1,5 @@
+testName,email,password,expected
+Valid login,validuser@example.com,Test@123,success
+Invalid password,validuser@example.com,WrongPass@1,failure
+Invalid email,invaliduser@example.com,Test@123,failure
+Empty credentials,,,failure

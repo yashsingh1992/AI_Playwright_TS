@@ -1,0 +1,10 @@
+* text=auto 
+
+# Shell scripts must keep LF to run on Linux/macOS/CI (CRLF causes "bad interpreter" errors)
+*.sh        text eol=lf
+*.bash      text eol=lf
+
+# Docker files must keep LF (they run inside Linux containers)
+Dockerfile          text eol=lf
+docker-entrypoint.sh text eol=lf
+
