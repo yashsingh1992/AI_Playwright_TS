@@ -11,7 +11,7 @@ import { ShoppingCartPage } from '../pages/ShoppingCartPage';
 
 dotenv.config();
 
-const APP_URL = process.env.WEB_APP_URL || 'http://localhost/opencart/upload/';
+const APP_URL = process.env.WEB_APP_URL || 'https://awesomeqa.com/ui/';
 
 type PageFixtures = {
     homePage: HomePage;
