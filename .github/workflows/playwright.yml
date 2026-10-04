@@ -18,7 +18,7 @@ on:
           - test:api
           - test:web
           - test:datadriven
-        default: "test:e2e"
+        default: "test:master"
       browser:
         description: "Select browser"
         type: choice
@@ -53,13 +53,13 @@ jobs:
         run: Copy-Item .env.example .env
       - name: 🧪 Run Playwright Tests
         run: |
-          $suite = "${{ github.event.inputs.test_suite || 'test:e2e' }}"
+          $suite = "${{ github.event.inputs.test_suite || 'test:master' }}"
           $browser = "${{ github.event.inputs.browser || 'chromium' }}"
           $mode = "${{ github.event.inputs.mode || 'headless' }}"
           $tag = $suite -replace 'test:', ''
           $browserFlag = "--project=$browser"
           $modeFlag = if ($mode -eq 'headed') { '--headed' } else { '' }
-          npx playwright test --grep "@$tag" $browserFlag $modeFlag --reporter=dot --output=test-results
+          npx playwright test --grep "@$tag" $browserFlag $modeFlag --output=test-results
         env:
           CI: "1"
       - name: 📊 Upload Playwright HTML Report

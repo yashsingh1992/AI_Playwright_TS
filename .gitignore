@@ -10,5 +10,6 @@ node_modules/
 # Environment & reports
 .env
 /reports/
+/custom-report/
 /allure-results/
 /allure-report/
