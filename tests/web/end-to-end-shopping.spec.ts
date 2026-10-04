@@ -1,7 +1,7 @@
 /**
  * Test Case: End-to-End Shopping Flow
  *
- * Tags: @master @regression @end-to-end @web
+ * Tags: @master @regression @e2e @web
  *
  * Steps:
  * 1) Open the application
@@ -26,7 +26,7 @@ import { test, expect } from '../../fixtures/pageFixtures';
 import { RandomDataUtil } from '../../utils/dataGenerator';
 import { Helper } from '../../utils/helper';
 
-test('End-to-end shopping flow test @master @regression @end-to-end @web', async ({
+test('End-to-end shopping flow test @master @regression @e2e @web', async ({
     page,
     homePage,
     registrationPage,
