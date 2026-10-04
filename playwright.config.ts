@@ -4,7 +4,7 @@ timeout: 30 * 1000, //30000 ms(30 secs)
 testDir: "./tests",
 fullyParallel: true,
 retries: process.env.CI ? 2 : 0,
-workers: process.env.CI ? 1 : undefined,
+workers: process.env.CI ? 2 : undefined,
 reporter: [
 ["list"], // Detailed console output
 //['line'], // One-line progress output
