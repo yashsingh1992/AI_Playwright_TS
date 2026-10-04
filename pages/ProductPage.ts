@@ -6,6 +6,7 @@ export class ProductPage {
 
     // Locators
     private readonly productTitle: Locator;
+    private readonly lblProductPrice: Locator;
     private readonly txtQuantity: Locator;
     private readonly btnAddToCart: Locator;
     private readonly msgConfirmation: Locator;
@@ -16,6 +17,7 @@ export class ProductPage {
 
         // Initialize locators with CSS selectors
         this.productTitle = page.locator('#content h1');
+        this.lblProductPrice = page.locator('#content ul.list-unstyled h2');
         this.txtQuantity = page.locator('#input-quantity');
         this.btnAddToCart = page.locator('#button-cart');
         this.msgConfirmation = page.locator('.alert.alert-success');
@@ -28,6 +30,36 @@ export class ProductPage {
      */
     async getProductTitle(): Promise<string> {
         return (await this.productTitle.textContent())?.trim() ?? '';
+    }
+
+    /**
+     * Verifies the product details (title, price and Add to Cart button) are displayed
+     * @returns Promise<boolean> - true if all product details are visible
+     */
+    async isProductDetailsDisplayed(): Promise<boolean> {
+        try {
+            await this.productTitle.waitFor({ state: 'visible' });
+            return (
+                (await this.lblProductPrice.isVisible()) &&
+                (await this.btnAddToCart.isVisible())
+            );
+        } catch (error) {
+            console.log(`Error checking product details: ${error}`);
+            return false;
+        }
+    }
+
+    /**
+     * Checks whether the product supports quantity selection
+     * @returns Promise<boolean> - true if the quantity field is visible and editable
+     */
+    async isQuantitySupported(): Promise<boolean> {
+        try {
+            return (await this.txtQuantity.isVisible()) && (await this.txtQuantity.isEditable());
+        } catch (error) {
+            console.log(`Error checking quantity field: ${error}`);
+            return false;
+        }
     }
 
     /**

@@ -9,6 +9,7 @@ export class Helper {
       productName: 'MacBook',
       productQuantity: '1',
       totalPrice: '$602.00',
+      cartQuantity: '2',
     };
   }
 
